@@ -2,6 +2,7 @@ package aplikacja;
 
 import hibernate.*;
 import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -85,6 +86,7 @@ public class MainApplikacji extends Application {
         SceneMenager.addScene("logowanie", "fxml/logowanie.fxml");
         SceneMenager.addScene("menuGlowneAdmin", "fxml/menuGlowneAdmin.fxml");
         SceneMenager.addScene("menuGlownePracownik", "fxml/menuGlownePracownik.fxml");
+        SceneMenager.addScene("klienci", "fxml/klienci.fxml");
 
         SceneMenager.renderScene("logowanie");
     }

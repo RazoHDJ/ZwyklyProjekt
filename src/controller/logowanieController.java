@@ -61,6 +61,7 @@ public class logowanieController {
             for (Pracownicy current : pracownicyList) {
                 if (current.getLogin().equals(loginField.getText()) && current.getHaslo().equals(passwordField.getText())) {
                     System.out.println("Pomyślnie zalogowano jako Pracownik");
+                    menuGlownePracownikController.setPracownik(current);
                     SceneMenager.renderScene("menuGlownePracownik");
                     znaleziono = true;
                     break;
