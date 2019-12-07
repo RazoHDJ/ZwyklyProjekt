@@ -1,7 +1,10 @@
 package controller;
 
+import aplikacja.MainApplikacji;
 import aplikacja.SceneMenager;
 import hibernate.AdminLoginInfo;
+import hibernate.Pracownicy;
+import hibernate.Wypozyczenia;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,7 +23,7 @@ public class logowanieController {
     public Label errorInLogin;
     private String correctPasswordAdmin = "admin";
     private String correctLoginAdmin = "admin";
-
+    private MainApplikacji xd;
     @FXML
     private PasswordField passwordField;
 
@@ -37,12 +40,14 @@ public class logowanieController {
         boolean znaleziono = false;
         Configuration configuration = new Configuration().configure("hibernate/hibernate.cfg.xml");
         configuration.addAnnotatedClass(AdminLoginInfo.class);
+        configuration.addAnnotatedClass(Pracownicy.class);
+        configuration.addAnnotatedClass(Wypozyczenia.class);
         SessionFactory factory = configuration.buildSessionFactory();
         Session session = factory.openSession();
 
         Criteria criteria = session.createCriteria(AdminLoginInfo.class);
         List<AdminLoginInfo> loginInfo = criteria.list();
-        for(AdminLoginInfo current : loginInfo){
+        for (AdminLoginInfo current : loginInfo) {
             if (current.getLogin().equals(loginField.getText()) && current.getPassword().equals(passwordField.getText())) {
                 System.out.println("Pomyślnie zalogowano jako Admin");
                 SceneMenager.renderScene("menuGlowneAdmin");
@@ -50,7 +55,20 @@ public class logowanieController {
                 break;
             }
         }
-        if (!znaleziono){
+        if (!znaleziono) {
+            criteria = session.createCriteria(Pracownicy.class);
+            List<Pracownicy> pracownicyList = criteria.list();
+            for (Pracownicy current : pracownicyList) {
+                if (current.getLogin().equals(loginField.getText()) && current.getHaslo().equals(passwordField.getText())) {
+                    System.out.println("Pomyślnie zalogowano jako Pracownik");
+                    SceneMenager.renderScene("menuGlownePracownik");
+                    znaleziono = true;
+                    break;
+                }
+            }
+        }
+        if (!znaleziono) {
+            passwordField.setText(null);
             errorInLogin.setVisible(true);
         }
         session.close();
@@ -59,7 +77,6 @@ public class logowanieController {
 
     @FXML
     void initialize() {
-
 
 
     }

@@ -1,4 +1,5 @@
 package aplikacja;
+
 import hibernate.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -12,11 +13,21 @@ import java.util.Date;
 import java.util.List;
 
 public class MainApplikacji extends Application {
-    public static void main(String[] args) { launch(args); }
+    //    public static Configuration configuration = new Configuration().configure("hibernate/hibernate.cfg.xml");
+//    public static SessionFactory factory = configuration.buildSessionFactory();
+//    public static Session session = factory.openSession();
+    public static void main(String[] args) {
+//        configuration.addAnnotatedClass(AdminLoginInfo.class);
+//        configuration.addAnnotatedClass(Klienci.class);
+//        configuration.addAnnotatedClass(Pracownicy.class);
+//        configuration.addAnnotatedClass(Samochody.class);
+//        configuration.addAnnotatedClass(Wypozyczenia.class);
+        launch(args);
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
+//    //    AdminLoginInfo admin = new AdminLoginInfo("admin", "admin1");
 //        Klienci klienci1 = new Klienci("Jeden", "Jedyny", 12345, 54321);
 //        Klienci klienci2 = new Klienci("Dwa", "Drugi", 23456, 65432);
 //        Pracownicy pracownicy1 = new Pracownicy("Trzy", "Trzeci", 345.67);
@@ -64,6 +75,7 @@ public class MainApplikacji extends Application {
 //        session.save(wypozyczenia3);
 //        session.save(wypozyczenia4);
 //
+//  //      session.save(admin);
 //        transaction.commit();
 //        session.close();
 //        factory.close();
@@ -72,6 +84,7 @@ public class MainApplikacji extends Application {
 
         SceneMenager.addScene("logowanie", "fxml/logowanie.fxml");
         SceneMenager.addScene("menuGlowneAdmin", "fxml/menuGlowneAdmin.fxml");
+        SceneMenager.addScene("menuGlownePracownik", "fxml/menuGlownePracownik.fxml");
 
         SceneMenager.renderScene("logowanie");
     }

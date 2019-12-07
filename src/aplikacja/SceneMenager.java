@@ -15,28 +15,29 @@ public class SceneMenager {
     public static void addScene(String name, String path) {
         view.put(name, path);
     }
-    public static void removeScene(String name){
+
+    public static void removeScene(String name) {
         view.remove(name);
     }
 
-    public static void renderScene(String name){
-        String path="";
+    public static void renderScene(String name) {
+        String path = "";
 
-        try{
+        try {
             path = view.get(name);
-           Parent root = FXMLLoader.load(SceneMenager.class.getClassLoader().getResource(path));
+            Parent root = FXMLLoader.load(SceneMenager.class.getClassLoader().getResource(path));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        }catch(IOException ex){
-            System.out.println("Nie udalo sie załadowsć scieżki:"+path);
-        }catch (RuntimeException ex){
+        } catch (IOException ex) {
+            System.out.println("Nie udalo sie załadowsć scieżki:" + path);
+        } catch (RuntimeException ex) {
             System.err.println("drugi wyjątek");
             ex.printStackTrace();
         }
     }
 
-    public static void setStage(Stage _stage){
+    public static void setStage(Stage _stage) {
         stage = _stage;
     }
 }
