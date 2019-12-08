@@ -45,9 +45,14 @@ public class menuGlownePracownikController {
     public static void setPracownik(Pracownicy pracownik) {
         menuGlownePracownikController.pracownik = pracownik;
     }
-
+    public static Pracownicy getPracownik(){return menuGlownePracownikController.pracownik;}
 
     public void nowyKlient(ActionEvent actionEvent) {
         SceneMenager.renderScene("klienci");
+    }
+
+    public void onActionZmienHasloPracownik(ActionEvent actionEvent) {
+        SceneMenager.renderScene("zmianaHaslaPracownik");
+
     }
 }

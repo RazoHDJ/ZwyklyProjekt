@@ -87,6 +87,8 @@ public class MainApplikacji extends Application {
         SceneMenager.addScene("menuGlowneAdmin", "fxml/menuGlowneAdmin.fxml");
         SceneMenager.addScene("menuGlownePracownik", "fxml/menuGlownePracownik.fxml");
         SceneMenager.addScene("klienci", "fxml/klienci.fxml");
+        SceneMenager.addScene("zmianaHaslaPracownik", "fxml/zmianaHaslaPracownik.fxml");
+
 
         SceneMenager.renderScene("logowanie");
     }

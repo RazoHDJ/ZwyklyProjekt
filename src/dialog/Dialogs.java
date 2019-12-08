@@ -6,6 +6,15 @@ import javafx.scene.control.ButtonType;
 import java.util.Optional;
 
 public class Dialogs {
+
+    public static void potwierdzenieZmianyHaslaDialog(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Zmina hasła");
+        alert.setHeaderText("Zmina hasła zakończona sukcesem");
+        alert.showAndWait();
+    }
+
+
     public static Optional<ButtonType> potwierdzenieWyjscia(){
         Alert potwierdzenie = new Alert((Alert.AlertType.CONFIRMATION));
         potwierdzenie.setTitle("Wyjście z programu");
