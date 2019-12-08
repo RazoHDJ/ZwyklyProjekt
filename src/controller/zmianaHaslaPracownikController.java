@@ -8,6 +8,7 @@ import hibernate.Wypozyczenia;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.VBox;
@@ -18,6 +19,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import java.util.List;
+import java.util.Optional;
 
 public class zmianaHaslaPracownikController {
     private static Pracownicy pracownik;
@@ -72,6 +74,13 @@ public class zmianaHaslaPracownikController {
 
         }else {
             podaneHaslaRozneERROR.setVisible(true);
+        }
+    }
+
+    public void onActionAnuluj(ActionEvent actionEvent) {
+       Optional<ButtonType> wynik = Dialogs.potwierdzenieAnulowaniaOknoKlient();
+        if (wynik.get() == ButtonType.OK) {
+            SceneMenager.renderScene("menuGlownePracownik");
         }
     }
 }

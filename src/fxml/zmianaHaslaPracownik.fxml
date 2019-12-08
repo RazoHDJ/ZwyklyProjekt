@@ -33,7 +33,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox fx:id="podanoPoprawneHaslo" alignment="CENTER" layoutX="110.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0">
+      <VBox fx:id="podanoPoprawneHaslo" alignment="CENTER" layoutX="110.0" layoutY="10.0" prefHeight="152.0" prefWidth="300.0" visible="false" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0">
          <children>
             <Label text="Podaj nowe hasło:">
                <VBox.margin>
@@ -63,5 +63,6 @@
             </Button>
          </children>
       </VBox>
+      <Button mnemonicParsing="false" onAction="#onActionAnuluj" text="Anuluj" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="125.0" />
    </children>
 </AnchorPane>
