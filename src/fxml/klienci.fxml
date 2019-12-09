@@ -32,7 +32,7 @@
                </children>
             </HBox>
             <Button fx:id="szukajButtonProperty" mnemonicParsing="false" onAction="#onActionSzukajButton" text="Szukaj" />
-            <VBox fx:id="znalezioneDane" alignment="CENTER_LEFT" prefHeight="223.0" prefWidth="539.0" spacing="10.0" visible="true"> <!-- tutuaj podmineić -->
+            <VBox fx:id="znalezioneDane" alignment="CENTER_LEFT" prefHeight="223.0" prefWidth="539.0" spacing="10.0"> <!-- tutuaj podmineić -->
                <children>
                   <Separator prefWidth="200.0" />
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
@@ -45,7 +45,7 @@
                            <font>
                               <Font size="24.0" />
                            </font></Label>
-                        <TextField fx:id="poleImie" visible="false">
+                        <TextField fx:id="poleImie">
                            <HBox.margin>
                               <Insets left="60.0" />
                            </HBox.margin>
@@ -63,7 +63,7 @@
                            <font>
                               <Font size="24.0" />
                            </font></Label>
-                        <TextField fx:id="poleNazwisko" visible="false">
+                        <TextField fx:id="poleNazwisko">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
@@ -81,7 +81,7 @@
                            <font>
                               <Font size="24.0" />
                            </font></Label>
-                        <TextField fx:id="poleNIP" visible="false">
+                        <TextField fx:id="poleNIP">
                            <HBox.margin>
                               <Insets left="65.0" />
                            </HBox.margin>
@@ -99,7 +99,7 @@
                            <font>
                               <Font size="24.0" />
                            </font></Label>
-                        <TextField fx:id="poleNrTelefonu" visible="false" />
+                        <TextField fx:id="poleNrTelefonu" />
                      </children>
                   </HBox>
                   <Separator prefWidth="200.0" />
@@ -111,9 +111,11 @@
          </children>
       </VBox>
       <Button fx:id="anulujButton" mnemonicParsing="false" onAction="#onActionAnuluj" text="Anuluj" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" />
-      <Button fx:id="dalejButton" visible="false" mnemonicParsing="false" onAction="#onActionDalej" text="Dalej" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
-      <Button fx:id="edytujKlientaButton" visible="false" mnemonicParsing="false" onAction="#onActionEdytuj" text="Edytuj" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="80.0" />
-      <Button fx:id="dodajKlientaButton" visible="false" mnemonicParsing="false" onAction="#onActionDodaj" text="Dodaj" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="80.0" />
-      <Label fx:id="nieZnalesionoERROR" visible="false" text="Nie znaleziono klienta w bazie danych, dodaj klienta do bazy:" textFill="RED" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="140.0" />
+      <Button fx:id="dalejButton" mnemonicParsing="false" onAction="#onActionDalej" text="Dalej" visible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+      <Button fx:id="edytujKlientaButton" mnemonicParsing="false" onAction="#onActionEdytuj" text="Edytuj" visible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="80.0" />
+      <Button fx:id="dodajButton" mnemonicParsing="false" onAction="#onActionDodaj" text="Dodaj" visible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="80.0" />
+      <Label fx:id="nieZnalesionoERROR" text="Nie znaleziono klienta w bazie danych, dodaj klienta do bazy:" textFill="RED" visible="false" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="140.0" />
+      <Button fx:id="zatwierdzButton" mnemonicParsing="false" onAction="#onActionZatwierdz" text="Zatwierdź" visible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="140.0" />
+      <Button fx:id="dodajKlientaButton" layoutX="402.0" layoutY="460.0" mnemonicParsing="false" onAction="#onActionDodajKlienta" text="Dodaj klienta" visible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="140.0" />
    </children>
 </AnchorPane>

@@ -16,6 +16,13 @@ public class Dialogs {
         alert.showAndWait();
     }
 
+    public static void niePodanoWszytkichPotrzebnychDanych(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Dodawanie klienta");
+        alert.setHeaderText("Nie można wykonać operacji!");
+        alert.setContentText("Nie można wykonać żądanej operacji,\nupewnij się że wszystkie pola zaostały wypełnione");
+        alert.showAndWait();
+    }
 
     public static Optional<ButtonType> potwierdzenieWyjscia() {
         Alert potwierdzenie = new Alert((Alert.AlertType.CONFIRMATION));
