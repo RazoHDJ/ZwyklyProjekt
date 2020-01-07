@@ -76,10 +76,5 @@ public class logowanieController {
         factory.close();
     }
 
-    @FXML
-    void initialize() {
-
-
-    }
 
 }

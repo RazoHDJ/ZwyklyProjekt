@@ -89,9 +89,11 @@ public class MainApplikacji extends Application {
         SceneMenager.addScene("klienci", "fxml/klienci.fxml");
         SceneMenager.addScene("zmianaHaslaPracownik", "fxml/zmianaHaslaPracownik.fxml");
         SceneMenager.addScene("samochody", "fxml/samochody.fxml");
+        SceneMenager.addScene("podsumowanie", "fxml/podsumowanie.fxml");
+
+        //zaczynamy od logowania
+        SceneMenager.renderScene("logowanie");
 
 
-//        SceneMenager.renderScene("logowanie");
-        SceneMenager.renderScene("samochody");
     }
 }

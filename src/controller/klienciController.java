@@ -66,10 +66,11 @@ public class klienciController {
         List<Klienci> klienci = criteria.list();
         for (Klienci current : klienci) {
             if (imieProperty.getText().equals(current.getImie()) && nazwiskoProperty.getText().equals(current.getNazwisko())) {
+                //przypisanie znalezionego klienta do zmiennej
                 klient = current;
                 znaleziono = true;
 
-                System.out.println("Znaleziono klienta");
+               // System.out.println("Znaleziono klienta");
 
                 znalezioneDane.setVisible(true);
                 setZnalezioneVisible(true);
@@ -231,5 +232,9 @@ public class klienciController {
         poleNazwisko.setText(null);
         poleNrTelefonu.setText(null);
         poleNIP.setText(null);
+    }
+
+    public Klienci getKlient() {
+        return klient;
     }
 }

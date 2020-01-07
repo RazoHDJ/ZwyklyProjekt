@@ -6,12 +6,15 @@ import hibernate.Pracownicy;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 
+import java.net.URL;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
-public class menuGlownePracownikController {
+public class menuGlownePracownikController implements Initializable {
     private static Pracownicy pracownik;
 
     @FXML
@@ -22,7 +25,8 @@ public class menuGlownePracownikController {
     public Label zalogowanyNazwisko;
 
     @FXML
-    void initialize() {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle){
         osobaZalogowana.setText(pracownik.getLogin());
         zalogowanyImie.setText(pracownik.getNazwisko());
         zalogowanyNazwisko.setText(pracownik.getNazwisko());

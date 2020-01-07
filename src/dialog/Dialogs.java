@@ -36,7 +36,7 @@ public class Dialogs {
         Alert potwierdzenie = new Alert((Alert.AlertType.CONFIRMATION));
         potwierdzenie.setTitle("Anulowanie Wypożyczenia");
         potwierdzenie.setHeaderText("Czy na pewno chcesz wyjść?");
-        potwierdzenie.setContentText("Anulowanie i wyjście z programu spowoduje\nutracenie nie zapisanych danych.");
+        potwierdzenie.setContentText("Anulowanie i wyjście z programu spowoduje\nutracenie niezapisanych danych.");
         Optional<ButtonType> wynik = potwierdzenie.showAndWait();
         return  wynik;
     }
@@ -51,8 +51,32 @@ public class Dialogs {
 
     public static void bladPodaniaDaty() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Błąd");
+        alert.setTitle("Error");
         alert.setHeaderText("Błędnie wybrano datę");
         alert.showAndWait();
     }
+    public static void bladWybraniaSamochoduTableView() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Proszę wybrać samochód, aby przejść dalej");
+        alert.showAndWait();
+    }
+
+    public static Optional<ButtonType> powrotDoMenu() {
+        Alert potwierdzenie = new Alert((Alert.AlertType.CONFIRMATION));
+        potwierdzenie.setTitle("Przejście do menu");
+        potwierdzenie.setHeaderText("Czy na pewno chcesz wyjść do menu?");
+        Optional<ButtonType> wynik = potwierdzenie.showAndWait();
+        return wynik;
+    }
+
+    public static Optional<ButtonType> potwierdzeniePowrotuDoKlientow(){
+        Alert potwierdzenie = new Alert((Alert.AlertType.CONFIRMATION));
+        potwierdzenie.setTitle("Informacja");
+        potwierdzenie.setHeaderText("Czy na pewno chcesz cofnąć?");
+        potwierdzenie.setContentText("Cofnięcie spowoduje utracenie niezapisanych danych.");
+        Optional<ButtonType> wynik = potwierdzenie.showAndWait();
+        return  wynik;
+    }
+
 }
