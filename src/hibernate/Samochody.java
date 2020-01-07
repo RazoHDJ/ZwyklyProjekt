@@ -26,6 +26,9 @@ public class Samochody implements Serializable {
     @Column(name = "kolor")
     private String kolor;
 
+    @Column(name = "ilosc_miejsc")
+    private int ilosc_miejsc;
+
     @Column(name = "cena_wynajmu_za_dzien")
     private double cena_za_wynajem;
 
@@ -36,12 +39,25 @@ public class Samochody implements Serializable {
     public Samochody() {
     }
 
-    public Samochody(String marka, String typ, int rok, String kolor, double cena_za_wynajem) {
+    public Samochody(String marka, String typ, int rok, String kolor, int ilosc_miejsc, double cena_za_wynajem) {
         this.marka = marka;
         this.typ = typ;
         this.rok = rok;
         this.kolor = kolor;
+        this.ilosc_miejsc = ilosc_miejsc;
         this.cena_za_wynajem = cena_za_wynajem;
+    }
+
+    public int getId_samochodu() {
+        return id_samochodu;
+    }
+
+    public int getIlosc_miejsc() {
+        return ilosc_miejsc;
+    }
+
+    public void setIlosc_miejsc(int ilosc_miejsc) {
+        this.ilosc_miejsc = ilosc_miejsc;
     }
 
     public String getMarka() {

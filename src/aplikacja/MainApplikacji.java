@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 public class MainApplikacji extends Application {
-    //    public static Configuration configuration = new Configuration().configure("hibernate/hibernate.cfg.xml");
+//        public static Configuration configuration = new Configuration().configure("hibernate/hibernate.cfg.xml");
 //    public static SessionFactory factory = configuration.buildSessionFactory();
 //    public static Session session = factory.openSession();
     public static void main(String[] args) {
@@ -33,8 +33,8 @@ public class MainApplikacji extends Application {
 //        Klienci klienci2 = new Klienci("Dwa", "Drugi", 23456, 65432);
 //        Pracownicy pracownicy1 = new Pracownicy("Trzy", "Trzeci", 345.67);
 //        Pracownicy pracownicy2 = new Pracownicy("Cztery", "Cztery", 456.78);
-//        Samochody samochody1 = new Samochody("Pieć", "Piątego", 5555, "Piąty", 55.55);
-//        Samochody samochody2 = new Samochody("Sześć", "Szóstego", 6666, "Szósty", 66.66);
+//        Samochody samochody1 = new Samochody("Marka", "automat", 2020, "Czerwony", 5, 52.55);
+//        Samochody samochody2 = new Samochody("Marka2", "manual", 2021, "Różowy", 6, 34.34);
 //        Wypozyczenia wypozyczenia1 = new Wypozyczenia(1, 11);
 //        Wypozyczenia wypozyczenia2 = new Wypozyczenia(2, 22);
 //        Wypozyczenia wypozyczenia3 = new Wypozyczenia(3, 33);
@@ -88,6 +88,7 @@ public class MainApplikacji extends Application {
         SceneMenager.addScene("menuGlownePracownik", "fxml/menuGlownePracownik.fxml");
         SceneMenager.addScene("klienci", "fxml/klienci.fxml");
         SceneMenager.addScene("zmianaHaslaPracownik", "fxml/zmianaHaslaPracownik.fxml");
+        SceneMenager.addScene("samochody", "fxml/samochody.fxml");
 
 
         SceneMenager.renderScene("logowanie");

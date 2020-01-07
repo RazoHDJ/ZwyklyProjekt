@@ -68,18 +68,20 @@ public class klienciController {
             if (imieProperty.getText().equals(current.getImie()) && nazwiskoProperty.getText().equals(current.getNazwisko())) {
                 klient = current;
                 znaleziono = true;
+
                 System.out.println("Znaleziono klienta");
+
                 znalezioneDane.setVisible(true);
+                setZnalezioneVisible(true);
+
                 znalezioneImie.setText(current.getImie());
                 znalezioneNazwisko.setText(current.getNazwisko());
                 znalezionyNIP.setText(Integer.toString(current.getNip()));
                 znalezionyNrTelefonu.setText(Integer.toString(current.getNr_telefonu()));
 
                 //na wypadek jakby klient został znaleziony za 2 razem
-                poleImie.setVisible(false);
-                poleNazwisko.setVisible(false);
-                poleNIP.setVisible(false);
-                poleNrTelefonu.setVisible(false);
+                setPolaVisible(false);
+
                 nieZnalesionoERROR.setVisible(false);
                 dodajKlientaButton.setVisible(false);
 
@@ -90,10 +92,9 @@ public class klienciController {
             }
         }
         if (!znaleziono) {
-//            poleImie.setVisible(true);
-//            poleNazwisko.setVisible(true);
-//            poleNIP.setVisible(true);
-//            poleNrTelefonu.setVisible(true);
+            setZnalezioneVisible(false);
+            clearZnalezione();
+
             dodajButton.setVisible(true);
             nieZnalesionoERROR.setVisible(true);
             edytujKlientaButton.setVisible(false);
@@ -110,7 +111,7 @@ public class klienciController {
     }
 
     public void onActionDalej(ActionEvent actionEvent) {
-        System.out.println("Dalej button on action");
+        SceneMenager.renderScene("samochody");
     }
 
     public void onActionEdytuj(ActionEvent actionEvent) {
@@ -118,16 +119,10 @@ public class klienciController {
         edytujKlientaButton.setVisible(false);
         zatwierdzButton.setVisible(true);
         //zamykanie starych labelów z informacjami o kliencie
-        znalezioneImie.setVisible(false);
-        znalezioneNazwisko.setVisible(false);
-        znalezionyNIP.setVisible(false);
-        znalezionyNrTelefonu.setVisible(false);
+        setZnalezioneVisible(false);
 
         //otwieranie nowych pól edycjii
-        poleImie.setVisible(true);
-        poleNazwisko.setVisible(true);
-        poleNrTelefonu.setVisible(true);
-        poleNIP.setVisible(true);
+        setPolaVisible(true);
 
         poleImie.setText(znalezioneImie.getText());
         znalezioneImie.setText(null);
@@ -143,16 +138,10 @@ public class klienciController {
         dodajButton.setVisible(false);
         dodajKlientaButton.setVisible(true);
 
-        znalezioneImie.setText(null);
-        znalezioneNazwisko.setText(null);
-        znalezionyNIP.setText(null);
-        znalezionyNrTelefonu.setText(null);
+        clearZnalezione();
 
-
-        poleImie.setVisible(true);
-        poleNazwisko.setVisible(true);
-        poleNrTelefonu.setVisible(true);
-        poleNIP.setVisible(true);
+        setPolaVisible(true);
+        clearPola();
 
     }
 
@@ -180,18 +169,13 @@ public class klienciController {
             nazwiskoProperty.setText(poleNazwisko.getText());
             onActionSzukajButton();
 
-            znalezioneImie.setVisible(true);
-            znalezioneNazwisko.setVisible(true);
-            znalezionyNIP.setVisible(true);
-            znalezionyNrTelefonu.setVisible(true);
+            setZnalezioneVisible(true);
 
             edytujKlientaButton.setVisible(true);
             dalejButton.setVisible(true);
             zatwierdzButton.setVisible(false);
-            poleImie.setVisible(false);
-            poleNazwisko.setVisible(false);
-            poleNIP.setVisible(false);
-            poleNrTelefonu.setVisible(false);
+
+            setPolaVisible(false);
         }else {
             Dialogs.niePodanoWszytkichPotrzebnychDanych();
         }
@@ -220,5 +204,32 @@ public class klienciController {
         } else {
             Dialogs.niePodanoWszytkichPotrzebnychDanych();
         }
+    }
+
+    public void setPolaVisible(boolean pokazac) {
+        poleImie.setVisible(pokazac);
+        poleNazwisko.setVisible(pokazac);
+        poleNIP.setVisible(pokazac);
+        poleNrTelefonu.setVisible(pokazac);
+    }
+
+    public void setZnalezioneVisible(boolean pokazac) {
+        znalezioneImie.setVisible(pokazac);
+        znalezioneNazwisko.setVisible(pokazac);
+        znalezionyNIP.setVisible(pokazac);
+        znalezionyNrTelefonu.setVisible(pokazac);
+    }
+
+    public void clearZnalezione() {
+        znalezioneImie.setText(null);
+        znalezioneNazwisko.setText(null);
+        znalezionyNIP.setText(null);
+        znalezionyNrTelefonu.setText(null);
+    }
+    public void clearPola(){
+        poleImie.setText(null);
+        poleNazwisko.setText(null);
+        poleNrTelefonu.setText(null);
+        poleNIP.setText(null);
     }
 }
