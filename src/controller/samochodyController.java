@@ -24,7 +24,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class samochodyController implements Initializable {
-    private Samochody wybranySamochod = null;
+    private static Samochody wybranySamochod = null;
     public int liczbaMiejsc = 0;
     public int rodzajSkrzyniBiegów = 0; //0 reprezentuje dowolną skrzynię biegów
     public MenuButton menuButton;
@@ -205,7 +205,7 @@ public class samochodyController implements Initializable {
         return dataWyp;
     }
 
-    public Samochody getWybranySamochod() {
+    public static Samochody getWybranySamochod() {
         return wybranySamochod;
     }
 }

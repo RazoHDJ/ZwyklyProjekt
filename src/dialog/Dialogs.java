@@ -79,4 +79,13 @@ public class Dialogs {
         return  wynik;
     }
 
+    public static Optional<ButtonType> potwierdzeniaPrzyPodsumowaniu(){
+        Alert potwierdzenie = new Alert((Alert.AlertType.CONFIRMATION));
+        potwierdzenie.setTitle("Informacja");
+        potwierdzenie.setHeaderText("Czy na pewno chcesz powrócić?");
+        potwierdzenie.setContentText("Powrót spowoduje utracenie niezapisanych danych.");
+        Optional<ButtonType> wynik = potwierdzenie.showAndWait();
+        return  wynik;
+    }
+
 }

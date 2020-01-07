@@ -35,7 +35,7 @@ public class klienciController {
     public Label nieZnalesionoERROR;
     public Button zatwierdzButton;
     public Button dodajButton;
-    private Klienci klient;
+    private static Klienci klient;
     public TextField nazwiskoProperty;
     public Button szukajButtonProperty;
     public TextField imieProperty;
@@ -234,7 +234,7 @@ public class klienciController {
         poleNIP.setText(null);
     }
 
-    public Klienci getKlient() {
+    public static Klienci getKlient() {
         return klient;
     }
 }
