@@ -48,4 +48,11 @@ public class Dialogs {
         Optional<ButtonType> wynik = potwierdzenie.showAndWait();
         return wynik;
     }
+
+    public static void bladPodaniaDaty() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Błąd");
+        alert.setHeaderText("Błędnie wybrano datę");
+        alert.showAndWait();
+    }
 }
