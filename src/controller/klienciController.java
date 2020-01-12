@@ -96,6 +96,7 @@ public class klienciController {
             setZnalezioneVisible(false);
             clearZnalezione();
 
+            dalejButton.setVisible(false);
             dodajButton.setVisible(true);
             nieZnalesionoERROR.setVisible(true);
             edytujKlientaButton.setVisible(false);

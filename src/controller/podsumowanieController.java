@@ -2,16 +2,22 @@ package controller;
 
 import aplikacja.SceneMenager;
 import dialog.Dialogs;
-import hibernate.Klienci;
-import hibernate.Pracownicy;
-import hibernate.Samochody;
+import hibernate.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -20,8 +26,11 @@ public class podsumowanieController implements Initializable {
     private Pracownicy pracownik;
     private Samochody samochod;
     private Klienci klient;
+    private LocalDate dataWypozyczenia;
+    private LocalDate dataZawrotu;
 
-
+    public Label labelDataWypozyczenia;
+    public Label labelDataZwrotu;
     @FXML
     private Label labelImie;
     @FXML
@@ -51,6 +60,7 @@ public class podsumowanieController implements Initializable {
 
         setDaneKlienta();
         setDaneSamochodu();
+        setDaty();
 
     }
 
@@ -72,8 +82,40 @@ public class podsumowanieController implements Initializable {
 
     @FXML
     void onActionPotwierdzenie(ActionEvent event) {
+        Wypozyczenia noweWypożyczenie = new Wypozyczenia(dataWypozyczenia, dataZawrotu);
+        List<Wypozyczenia> wypozyczeniaList = new ArrayList<>();
 
-        // POSKŁADAĆ TO WSZYSKTO DO SIEBIE I BĘDZIE GUCCI :)
+        wypozyczeniaList = pracownik.getWypozyczeniaList();
+        wypozyczeniaList.add(noweWypożyczenie);
+        pracownik.setWypozyczeniaList(wypozyczeniaList);
+
+
+        wypozyczeniaList = klient.getWypozyczeniaList();
+        wypozyczeniaList.add(noweWypożyczenie);
+        klient.setWypozyczeniaList(wypozyczeniaList);
+
+        wypozyczeniaList = samochod.getWypozyczeniaList();
+        wypozyczeniaList.add(noweWypożyczenie);
+        samochod.setWypozyczeniaList(wypozyczeniaList);
+
+        Configuration configuration = new Configuration().configure("hibernate/hibernate.cfg.xml");
+        configuration.addAnnotatedClass(Klienci.class);
+        configuration.addAnnotatedClass(Pracownicy.class);
+        configuration.addAnnotatedClass(Samochody.class);
+        configuration.addAnnotatedClass(Wypozyczenia.class);
+        SessionFactory factory = configuration.buildSessionFactory();
+        Session session = factory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        session.save(noweWypożyczenie);
+        session.merge(klient);
+        session.merge(samochod);
+        session.merge(pracownik);
+
+        transaction.commit();
+
+        session.close();
+        factory.close();
 
     }
 
@@ -84,12 +126,29 @@ public class podsumowanieController implements Initializable {
         labelTelefon.setText(Integer.toString(klient.getNr_telefonu()));
     }
 
-    public void setDaneSamochodu(){
+    public void setDaneSamochodu() {
         labelMarka.setText(samochod.getMarka());
         labelRok.setText(Integer.toString(samochod.getRok()));
         labelMiejsca.setText(Integer.toString(samochod.getIlosc_miejsc()));
         labelSkrzynia.setText(samochod.getTyp());
         labelKolor.setText(samochod.getKolor());
         labelCena.setText(Double.toString(samochod.getCena_za_wynajem()));
+    }
+
+    private void setDaty() {
+
+        dataWypozyczenia = samochodyController.getDataWypozyczenia();
+        dataZawrotu = samochodyController.getDataZwrotu();
+        labelDataWypozyczenia.setText(String.valueOf(dataWypozyczenia));
+        labelDataZwrotu.setText(String.valueOf(dataZawrotu));
+
+    }
+
+    public void setDataWypozyczenia(LocalDate dataWypozyczenia) {
+        this.dataWypozyczenia = dataWypozyczenia;
+    }
+
+    public void setDataZawrotu(LocalDate dataZawrotu) {
+        this.dataZawrotu = dataZawrotu;
     }
 }

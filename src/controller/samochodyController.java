@@ -24,6 +24,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class samochodyController implements Initializable {
+
+
+    private static LocalDate dataWypozyczenia;
+    private static LocalDate dataZwrotu;
+
     private static Samochody wybranySamochod = null;
     public int liczbaMiejsc = 0;
     public int rodzajSkrzyniBiegów = 0; //0 reprezentuje dowolną skrzynię biegów
@@ -58,7 +63,7 @@ public class samochodyController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         dataWyp.setValue(dzisiejszaData);
-        dataZwr.setValue(dzisiejszaData);
+        dataZwr.setValue(dzisiejszaData.plusDays(1));
 
 //        Configuration configuration = new Configuration().configure("hibernate/hibernate.cfg.xml");
 //        configuration.addAnnotatedClass(Samochody.class);
@@ -86,20 +91,16 @@ public class samochodyController implements Initializable {
 
     public void onActionButtonSzukaj(ActionEvent actionEvent) {
         tableView.getItems().clear();
-        LocalDate wypozyczenie = null;
-        LocalDate zwrot = null;
 
         if (dataWyp.getValue().isEqual(dataZwr.getValue()) || dataWyp.getValue().isAfter(dataZwr.getValue())) {
             Dialogs.bladPodaniaDaty();
         } else {
-            wypozyczenie = dataWyp.getValue();
-            zwrot = dataZwr.getValue();
+            dataWypozyczenia = dataWyp.getValue();
+            dataZwrotu = dataZwr.getValue();
 
-        }
-
-        if (radioButtonManual.isSelected()) rodzajSkrzyniBiegów = 1;
-        else if (radioButtonAutomat.isSelected()) rodzajSkrzyniBiegów = 2;
-        else rodzajSkrzyniBiegów = 0;
+            if (radioButtonManual.isSelected()) rodzajSkrzyniBiegów = 1;
+            else if (radioButtonAutomat.isSelected()) rodzajSkrzyniBiegów = 2;
+            else rodzajSkrzyniBiegów = 0;
 
 //        System.out.println("Data wypożyczenia: " + wypozyczenie);
 //        System.out.println("Data zwrotu: " + zwrot);
@@ -108,44 +109,44 @@ public class samochodyController implements Initializable {
 //        System.out.println(wypozyczenie.getYear());
 
 
-        Configuration configuration = new Configuration().configure("hibernate/hibernate.cfg.xml");
-        configuration.addAnnotatedClass(Samochody.class);
-        configuration.addAnnotatedClass(Wypozyczenia.class);
-        SessionFactory factory = configuration.buildSessionFactory();
-        Session session = factory.openSession();
+            Configuration configuration = new Configuration().configure("hibernate/hibernate.cfg.xml");
+            configuration.addAnnotatedClass(Samochody.class);
+            configuration.addAnnotatedClass(Wypozyczenia.class);
+            SessionFactory factory = configuration.buildSessionFactory();
+            Session session = factory.openSession();
 
 
-        tableCena.setCellValueFactory(new PropertyValueFactory<>("cena_za_wynajem"));
-        tableKolor.setCellValueFactory(new PropertyValueFactory<>("kolor"));
-        tableMarka.setCellValueFactory(new PropertyValueFactory<>("marka"));
-        tableMiejsca.setCellValueFactory(new PropertyValueFactory<>("ilosc_miejsc"));
-        tableRok.setCellValueFactory(new PropertyValueFactory<>("rok"));
-        tableSkrzynia.setCellValueFactory(new PropertyValueFactory<>("typ"));
+            tableCena.setCellValueFactory(new PropertyValueFactory<>("cena_za_wynajem"));
+            tableKolor.setCellValueFactory(new PropertyValueFactory<>("kolor"));
+            tableMarka.setCellValueFactory(new PropertyValueFactory<>("marka"));
+            tableMiejsca.setCellValueFactory(new PropertyValueFactory<>("ilosc_miejsc"));
+            tableRok.setCellValueFactory(new PropertyValueFactory<>("rok"));
+            tableSkrzynia.setCellValueFactory(new PropertyValueFactory<>("typ"));
 
-        Criteria criteria = session.createCriteria(Samochody.class);
-        List<Samochody> samochodyList = criteria.list();
-        for (Samochody current : samochodyList) {
+            Criteria criteria = session.createCriteria(Samochody.class);
+            List<Samochody> samochodyList = criteria.list();
+            for (Samochody current : samochodyList) {
 
-            if (liczbaMiejsc != 0) {
-                if (liczbaMiejsc != current.getIlosc_miejsc()) {
-                    continue;
+                if (liczbaMiejsc != 0) {
+                    if (liczbaMiejsc != current.getIlosc_miejsc()) {
+                        continue;
+                    }
                 }
-            }
 
-            if (rodzajSkrzyniBiegów != 0) {
-                if (rodzajSkrzyniBiegów == 2 && current.getTyp().equals("manualna")) {
-                    continue;
-                } else if (rodzajSkrzyniBiegów == 1 && current.getTyp().equals("automatyczna")) {
-                    continue;
+                if (rodzajSkrzyniBiegów != 0) {
+                    if (rodzajSkrzyniBiegów == 2 && current.getTyp().equals("manualna")) {
+                        continue;
+                    } else if (rodzajSkrzyniBiegów == 1 && current.getTyp().equals("automatyczna")) {
+                        continue;
+                    }
                 }
-            }
 
-            tableView.getItems().add(current);
+                tableView.getItems().add(current);
+            }
+            session.close();
+            factory.close();
+
         }
-        session.close();
-        factory.close();
-
-
     }
 
 
@@ -207,5 +208,13 @@ public class samochodyController implements Initializable {
 
     public static Samochody getWybranySamochod() {
         return wybranySamochod;
+    }
+
+    public static LocalDate getDataWypozyczenia() {
+        return dataWypozyczenia;
+    }
+
+    public static LocalDate getDataZwrotu() {
+        return dataZwrotu;
     }
 }
