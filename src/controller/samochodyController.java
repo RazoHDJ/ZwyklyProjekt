@@ -125,7 +125,25 @@ public class samochodyController implements Initializable {
 
             Criteria criteria = session.createCriteria(Samochody.class);
             List<Samochody> samochodyList = criteria.list();
+            List<Wypozyczenia> templaryWypozyczeniaList;
             for (Samochody current : samochodyList) {
+                templaryWypozyczeniaList = current.getWypozyczeniaList();
+                boolean autoZajete = false;
+                for (Wypozyczenia obecne : templaryWypozyczeniaList) {
+                    if (obecne.getData_wynajmu().isAfter(dataWypozyczenia) && obecne.getData_wynajmu().isBefore(dataZwrotu)) {
+                        autoZajete = true;
+                    } else if (obecne.getData_wynajmu().isEqual(dataWypozyczenia) || obecne.getData_wynajmu().isEqual(dataZwrotu)) {
+                        autoZajete = true;
+                    } else if (obecne.getData_zwrotu().isAfter(dataWypozyczenia) && obecne.getData_zwrotu().isBefore(dataZwrotu)) {
+                        autoZajete = true;
+                    } else if (obecne.getData_zwrotu().isEqual(dataWypozyczenia) || obecne.getData_zwrotu().isEqual(dataZwrotu)) {
+                        autoZajete = true;
+                    }
+                }
+
+                if (autoZajete) {
+                    continue;
+                }
 
                 if (liczbaMiejsc != 0) {
                     if (liczbaMiejsc != current.getIlosc_miejsc()) {

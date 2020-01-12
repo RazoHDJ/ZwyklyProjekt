@@ -1,6 +1,7 @@
 package controller;
 
 import aplikacja.SceneMenager;
+import com.sun.xml.bind.v2.runtime.output.SAXOutput;
 import dialog.Dialogs;
 import hibernate.*;
 import javafx.event.ActionEvent;
@@ -8,7 +9,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -82,21 +85,7 @@ public class podsumowanieController implements Initializable {
 
     @FXML
     void onActionPotwierdzenie(ActionEvent event) {
-        Wypozyczenia noweWypożyczenie = new Wypozyczenia(dataWypozyczenia, dataZawrotu);
-        List<Wypozyczenia> wypozyczeniaList = new ArrayList<>();
-
-        wypozyczeniaList = pracownik.getWypozyczeniaList();
-        wypozyczeniaList.add(noweWypożyczenie);
-        pracownik.setWypozyczeniaList(wypozyczeniaList);
-
-
-        wypozyczeniaList = klient.getWypozyczeniaList();
-        wypozyczeniaList.add(noweWypożyczenie);
-        klient.setWypozyczeniaList(wypozyczeniaList);
-
-        wypozyczeniaList = samochod.getWypozyczeniaList();
-        wypozyczeniaList.add(noweWypożyczenie);
-        samochod.setWypozyczeniaList(wypozyczeniaList);
+        Wypozyczenia noweWypozyczenie = new Wypozyczenia(dataWypozyczenia, dataZawrotu);
 
         Configuration configuration = new Configuration().configure("hibernate/hibernate.cfg.xml");
         configuration.addAnnotatedClass(Klienci.class);
@@ -107,15 +96,21 @@ public class podsumowanieController implements Initializable {
         Session session = factory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        session.save(noweWypożyczenie);
+       klient.addWypozyczenie(noweWypozyczenie);
+       samochod.addWypozyczenie(noweWypozyczenie);
+       pracownik.addWypozyczenie(noweWypozyczenie);
+
+        session.save(noweWypozyczenie);
         session.merge(klient);
         session.merge(samochod);
         session.merge(pracownik);
 
         transaction.commit();
-
         session.close();
         factory.close();
+
+        Dialogs.udaneDodanieWypozyczenia();
+        SceneMenager.renderScene("menuGlownePracownik");
 
     }
 

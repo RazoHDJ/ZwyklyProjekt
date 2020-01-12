@@ -2,6 +2,7 @@ package hibernate;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,7 +13,7 @@ public class Pracownicy implements Serializable {
     @Column(name = "id_pracownika")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_studenta;
+    private int id_pracownika;
 
     @Column(name = "imie")
     private String imie;
@@ -29,7 +30,7 @@ public class Pracownicy implements Serializable {
     @Column(name = "haslo")
     private String haslo;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_pracownika")
     private List<Wypozyczenia> wypozyczeniaList;
 
@@ -91,6 +92,13 @@ public class Pracownicy implements Serializable {
     }
 
     public void addWypozyczenie(Wypozyczenia noweWypozyczenie){
-        this.wypozyczeniaList.add(noweWypozyczenie);
+        if (wypozyczeniaList == null) {
+            wypozyczeniaList = new ArrayList<>();
+        }
+        wypozyczeniaList.add(noweWypozyczenie);
+    }
+
+    public int getId_pracownika() {
+        return id_pracownika;
     }
 }

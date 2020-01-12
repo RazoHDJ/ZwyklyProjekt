@@ -2,6 +2,7 @@ package hibernate;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -32,8 +33,8 @@ public class Samochody implements Serializable {
     @Column(name = "cena_wynajmu_za_dzien")
     private double cena_za_wynajem;
 
-    @OneToMany
-    @JoinColumn(name = "id_samochodu")
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_samochodu" )
     private List<Wypozyczenia> wypozyczeniaList;
 
     public Samochody() {
@@ -108,6 +109,9 @@ public class Samochody implements Serializable {
     }
 
     public void addWypozyczenie(Wypozyczenia noweWypozyczenie){
-        this.wypozyczeniaList.add(noweWypozyczenie);
+        if (wypozyczeniaList == null) {
+            wypozyczeniaList = new ArrayList<>();
+        }
+        wypozyczeniaList.add(noweWypozyczenie);
     }
 }

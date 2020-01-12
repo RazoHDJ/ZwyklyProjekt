@@ -30,6 +30,10 @@ public class Wypozyczenia implements Serializable {
         this.data_zwrotu = data_zwrotu;
     }
 
+    public int getId_wypozyczenia() {
+        return id_wypozyczenia;
+    }
+
     public LocalDate getData_wynajmu() {
         return data_wynajmu;
     }

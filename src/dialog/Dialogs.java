@@ -88,4 +88,12 @@ public class Dialogs {
         return  wynik;
     }
 
+    public static void udaneDodanieWypozyczenia(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Utworzono nowe wypozyczenie");
+        alert.setHeaderText("Utworzono nowe wyporzyczenie!");
+        alert.showAndWait();
+    }
+
+
 }

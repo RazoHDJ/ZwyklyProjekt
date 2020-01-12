@@ -2,6 +2,7 @@ package hibernate;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,7 +28,7 @@ public class Klienci implements Serializable {
     @Column(name = "nr_telefonu")
     private int nr_telefonu;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_klienta")
     private List<Wypozyczenia> wypozyczeniaList;
 
@@ -74,14 +75,21 @@ public class Klienci implements Serializable {
     }
 
     public List<Wypozyczenia> getWypozyczeniaList() {
-        return wypozyczeniaList;
+        return this.wypozyczeniaList;
     }
 
     public void setWypozyczeniaList(List<Wypozyczenia> wypozyczeniaList) {
         this.wypozyczeniaList = wypozyczeniaList;
     }
 
+    public int getId_klienta() {
+        return id_klienta;
+    }
+
     public void addWypozyczenie(Wypozyczenia noweWypozyczenie){
-        this.wypozyczeniaList.add(noweWypozyczenie);
+        if (wypozyczeniaList == null) {
+            wypozyczeniaList = new ArrayList<>();
+        }
+        wypozyczeniaList.add(noweWypozyczenie);
     }
 }
