@@ -27,16 +27,9 @@ public class menuGlownieAdminController implements Initializable {
         SceneMenager.renderScene("dodawanieSamochodu");
     }
 
-    public void onActionKlienci(ActionEvent actionEvent) {
-    }
-
-    public void onActionPracownicy(ActionEvent actionEvent) {
-    }
-
-    public void onActionSamochody(ActionEvent actionEvent) {
-    }
 
     public void onActionWypozyczenia(ActionEvent actionEvent) {
+        SceneMenager.renderScene("wypozyczenia");
     }
 
     public void onActionWyloguj(ActionEvent actionEvent) {
