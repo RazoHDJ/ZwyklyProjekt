@@ -37,10 +37,12 @@ public class Pracownicy implements Serializable {
     public Pracownicy() {
     }
 
-    public Pracownicy(String imie, String nazwisko, double zarobki) {
+    public Pracownicy(String imie, String nazwisko, double zarobki, String login, String haslo) {
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.zarobki = zarobki;
+        this.login = login;
+        this.haslo = haslo;
     }
 
     public String getImie() {

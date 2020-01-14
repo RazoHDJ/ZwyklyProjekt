@@ -95,5 +95,40 @@ public class Dialogs {
         alert.showAndWait();
     }
 
+    public static void brakujeDanych() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Nie wypełniono wszystkich pól");
+        alert.showAndWait();
+    }
+
+    public static void podanoDwaRozneHasla() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Podane hasła nie są takie same");
+        alert.showAndWait();
+    }
+
+    public static void dodanoPracownika(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Dodano pracownika");
+        alert.setHeaderText("Dodano nowego pracownika");
+        alert.showAndWait();
+    }
+
+    public static void dodanoSamochod(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Dodano samochód");
+        alert.setHeaderText("Dodano nowy samochód");
+        alert.showAndWait();
+    }
+
+    public static Optional<ButtonType> anulowanieDodawaniaSamochodu(){
+        Alert potwierdzenie = new Alert((Alert.AlertType.CONFIRMATION));
+        potwierdzenie.setTitle("Anulowanie");
+        potwierdzenie.setHeaderText("Czy na pewno chcesz wyjść?");
+        Optional<ButtonType> wynik = potwierdzenie.showAndWait();
+        return  wynik;
+    }
 
 }

@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="controller.menuGlownieAdminController" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="bodydb" stylesheets="@styleSheet/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.menuGlownieAdminController">
    <children>
-      <HBox alignment="CENTER" layoutX="200.0" prefHeight="400.0" prefWidth="600.0" spacing="20.0" styleClass="bodydb" stylesheets="@styleSheet/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox alignment="CENTER" layoutX="200.0" prefHeight="290.0" prefWidth="600.0" spacing="20.0" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox alignment="CENTER" prefHeight="400.0" prefWidth="207.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0">
+                  <Button mnemonicParsing="false" onAction="#onActionDodawaniePracownika" prefHeight="200.0" prefWidth="200.0">
                      <graphic>
                         <ImageView fitHeight="125.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -37,7 +37,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="400.0" prefWidth="238.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0">
+                  <Button mnemonicParsing="false" onAction="#onActionDodawanieSamochodu" prefHeight="200.0" prefWidth="200.0">
                      <graphic>
                         <ImageView fitHeight="125.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -53,6 +53,16 @@
                   </Label>
                </children>
             </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="290.0">
+         <children>
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionKlienci" text="Klienci" />
+            <Button mnemonicParsing="false" onAction="#onActionPracownicy" text="Pracownicy" />
+            <Button layoutX="151.0" layoutY="53.0" mnemonicParsing="false" onAction="#onActionSamochody" text="Samochody" />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionWypozyczenia" text="Wypożyczenia" />
+            <Button mnemonicParsing="false" onAction="#onActionWyloguj" text="Wyloguj" />
+            <Button mnemonicParsing="false" onAction="#onActionWyjscie" text="Wyjście" />
          </children>
       </HBox>
    </children>

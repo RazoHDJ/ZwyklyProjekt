@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="controller.dodawaniePracownikaController" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <VBox prefHeight="319.0" prefWidth="160.0" spacing="20.0">
+               <children>
+                  <Label text="Imię:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label text="Nazwisko:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label text="Login:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label text="Hasło:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label text="Powtórz hasło:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label text="Pensja:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="400.0" prefWidth="200.0" spacing="22.0">
+               <children>
+                  <TextField fx:id="imie" />
+                  <TextField fx:id="nazwisko" />
+                  <TextField fx:id="login" />
+                  <PasswordField fx:id="haslo" />
+                  <PasswordField fx:id="hasloPotorz" />
+                  <TextField fx:id="pensja" />
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
+      <Button layoutX="38.0" layoutY="341.0" mnemonicParsing="false" onAction="#onActionAnuluj" text="Anuluj" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="35.0" />
+      <Button layoutX="480.0" layoutY="341.0" mnemonicParsing="false" onAction="#onActionDodaj" text="Dodaj" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="35.0" />
+   </children>
+</AnchorPane>
