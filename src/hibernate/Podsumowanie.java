@@ -1,15 +1,27 @@
 package hibernate;
 
-public class Podsumowanie {
+import java.time.LocalDate;
 
+public class Podsumowanie {
+    //Wypożyczenia
+    private int idWypozyczenia;
+    private LocalDate dataWynajmu;
+    private LocalDate dataZwrotu;
+
+    //Pracownicy
+    private int idPracownika;
     private String imiePracownika;
     private String nazwiskoPracownika;
 
+    //Klient
+    private int idKlienta;
     private String imieKlienta;
     private String nazwikosKlienta;
     private int NIP;
     private int nrTelefonu;
 
+    //Samochód
+    private int idSamochodu;
     private String marka;
     private int rok;
     private int iloscMiejsc;
@@ -17,13 +29,19 @@ public class Podsumowanie {
     private String kolor;
     private double cena;
 
-    public Podsumowanie(String imiePracownika, String nazwiskoPracownika, String imieKlienta, String nazwikosKlienta, int NIP, int nrTelefonu, String marka, int rok, int iloscMiejsc, String skrzyniaBiegów, String kolor, double cena) {
+    public Podsumowanie(int idWypozyczenia, LocalDate dataWynajmu, LocalDate dataZwrotu, int idPracownika, String imiePracownika, String nazwiskoPracownika, int idKlienta, String imieKlienta, String nazwikosKlienta, int NIP, int nrTelefonu, int idSamochodu, String marka, int rok, int iloscMiejsc, String skrzyniaBiegów, String kolor, double cena) {
+        this.idWypozyczenia = idWypozyczenia;
+        this.dataWynajmu = dataWynajmu;
+        this.dataZwrotu = dataZwrotu;
+        this.idPracownika = idPracownika;
         this.imiePracownika = imiePracownika;
         this.nazwiskoPracownika = nazwiskoPracownika;
+        this.idKlienta = idKlienta;
         this.imieKlienta = imieKlienta;
         this.nazwikosKlienta = nazwikosKlienta;
         this.NIP = NIP;
         this.nrTelefonu = nrTelefonu;
+        this.idSamochodu = idSamochodu;
         this.marka = marka;
         this.rok = rok;
         this.iloscMiejsc = iloscMiejsc;
@@ -33,6 +51,54 @@ public class Podsumowanie {
     }
 
     public Podsumowanie() {
+    }
+
+    public int getIdWypozyczenia() {
+        return idWypozyczenia;
+    }
+
+    public void setIdWypozyczenia(int idWypozyczenia) {
+        this.idWypozyczenia = idWypozyczenia;
+    }
+
+    public LocalDate getDataWynajmu() {
+        return dataWynajmu;
+    }
+
+    public void setDataWynajmu(LocalDate dataWynajmu) {
+        this.dataWynajmu = dataWynajmu;
+    }
+
+    public LocalDate getDataZwrotu() {
+        return dataZwrotu;
+    }
+
+    public void setDataZwrotu(LocalDate dataZwrotu) {
+        this.dataZwrotu = dataZwrotu;
+    }
+
+    public int getIdPracownika() {
+        return idPracownika;
+    }
+
+    public void setIdPracownika(int idPracownika) {
+        this.idPracownika = idPracownika;
+    }
+
+    public int getIdKlienta() {
+        return idKlienta;
+    }
+
+    public void setIdKlienta(int idKlienta) {
+        this.idKlienta = idKlienta;
+    }
+
+    public int getIdSamochodu() {
+        return idSamochodu;
+    }
+
+    public void setIdSamochodu(int idSamochodu) {
+        this.idSamochodu = idSamochodu;
     }
 
     public String getImiePracownika() {

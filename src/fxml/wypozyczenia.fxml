@@ -8,27 +8,63 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.wypozyczeniaController">
-   <children>
-      <HBox alignment="CENTER" layoutX="180.0" layoutY="27.0" prefHeight="75.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Label text="Wypożyczenia">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
-      <TableView fx:id="tabelView" layoutX="200.0" layoutY="133.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="75.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-      </TableView>
-      <Button layoutX="65.0" layoutY="350.0" mnemonicParsing="false" text="Wróc" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="35.0" />
-      <Button layoutX="525.0" layoutY="350.0" mnemonicParsing="false" text="Info" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="35.0" />
-   </children>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.wypozyczeniaController">
+    <children>
+        <HBox alignment="CENTER" layoutX="180.0" layoutY="27.0" prefHeight="75.0" prefWidth="600.0"
+              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label text="Wypożyczenia">
+                    <font>
+                        <Font size="24.0"/>
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <TableView fx:id="tabelView" layoutX="200.0" layoutY="133.0" prefHeight="200.0" prefWidth="200.0"
+                   AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0"
+                   AnchorPane.topAnchor="75.0">
+            <columns>
+                <TableColumn prefWidth="75.0" text="Wypożyczenia">
+                    <columns>
+                        <TableColumn fx:id="tableViewWypozyczeniaId" prefWidth="75.0" text="id"/>
+                        <TableColumn fx:id="tableViewDataWynajmu" prefWidth="75.0" text="data wynajmu"/>
+                        <TableColumn fx:id="tableViewDataZwrotu" prefWidth="75.0" text="data zwrotu"/>
+                    </columns>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="Pracownicy">
+                    <columns>
+                        <TableColumn fx:id="tableViewPracownicyID" prefWidth="75.0" text="id"/>
+                        <TableColumn fx:id="tableViewPracownicyImie" prefWidth="75.0" text="imie"/>
+                        <TableColumn fx:id="tableViewPracownicyNazwisko" prefWidth="75.0" text="nazwisko"/>
+                    </columns>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="Kliecni">
+                    <columns>
+                        <TableColumn fx:id="tableViewKlienciID" prefWidth="75.0" text="id"/>
+                        <TableColumn fx:id="tableViewKlienciImie" prefWidth="75.0" text="imie"/>
+                        <TableColumn fx:id="tableViewKlienciNazwisko" prefWidth="75.0" text="nazwisko"/>
+                        <TableColumn fx:id="tableViewKlienciNIP" prefWidth="75.0" text="NIP"/>
+                        <TableColumn fx:id="tableViewKlienciNrTel" prefWidth="75.0" text="nr_telefonu"/>
+                    </columns>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="Samochody">
+                    <columns>
+                        <TableColumn fx:id="tableViewSamochodyID" prefWidth="75.0" text="id"/>
+                        <TableColumn fx:id="tableViewSamochodyMarka" prefWidth="75.0" text="marka"/>
+                        <TableColumn fx:id="tableViewSamochodyRok" prefWidth="75.0" text="rok"/>
+                        <TableColumn fx:id="tableViewSamochodyIlosc" prefWidth="75.0" text="ilość_miejsc"/>
+                        <TableColumn fx:id="tableViewSamochodySkrzynia" prefWidth="75.0" text="skrzynia_biegów"/>
+                        <TableColumn fx:id="tableViewSamochodyKolor" prefWidth="75.0" text="kolor"/>
+                        <TableColumn fx:id="tableViewSamochodyCena" prefWidth="75.0" text="cena"/>
+                    </columns>
+                </TableColumn>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+        </TableView>
+        <Button layoutX="65.0" layoutY="350.0" mnemonicParsing="false" onAction="#onActionWroc" text="Wróc"
+                AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="35.0"/>
+    </children>
 </AnchorPane>
