@@ -195,6 +195,5 @@ public class wypozyczeniaController implements Initializable {
         for (Podsumowanie current : podsumowanieList) {
             tabelView.getItems().add(current);
         }
-
     }
 }
