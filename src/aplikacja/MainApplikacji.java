@@ -96,8 +96,8 @@ public class MainApplikacji extends Application {
         SceneMenager.addScene("wypozyczenia", "fxml/wypozyczenia.fxml");
 
         //zaczynamy od logowania
-//        SceneMenager.renderScene("logowanie");
-        SceneMenager.renderScene("menuGlowneAdmin");
+        SceneMenager.renderScene("logowanie");
+//        SceneMenager.renderScene("menuGlowneAdmin");
 
 
     }
