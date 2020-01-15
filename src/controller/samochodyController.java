@@ -2,6 +2,7 @@ package controller;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -123,6 +124,8 @@ public class samochodyController implements Initializable {
             tableRok.setCellValueFactory(new PropertyValueFactory<>("rok"));
             tableSkrzynia.setCellValueFactory(new PropertyValueFactory<>("typ"));
 
+            List<Integer> idWyswietlonych = new ArrayList<>();
+
             Criteria criteria = session.createCriteria(Samochody.class);
             List<Samochody> samochodyList = criteria.list();
             List<Wypozyczenia> templaryWypozyczeniaList;
@@ -158,8 +161,10 @@ public class samochodyController implements Initializable {
                         continue;
                     }
                 }
-
-                tableView.getItems().add(current);
+                if (!szukajWLiscie(idWyswietlonych, current)) {
+                    tableView.getItems().add(current);
+                    idWyswietlonych.add(current.getId_samochodu());
+                }
             }
             session.close();
             factory.close();
@@ -167,6 +172,14 @@ public class samochodyController implements Initializable {
         }
     }
 
+    public boolean szukajWLiscie(List<Integer> lista, Samochody obecny) {
+        for (Integer current : lista) {
+            if (current == obecny.getId_samochodu()) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public void onActionMenu(ActionEvent actionEvent) {
         menuButton.setText(((MenuItem) actionEvent.getSource()).getText());
