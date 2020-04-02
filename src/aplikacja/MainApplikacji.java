@@ -18,11 +18,6 @@ public class MainApplikacji extends Application {
 //    public static SessionFactory factory = configuration.buildSessionFactory();
 //    public static Session session = factory.openSession();
     public static void main(String[] args) {
-//        configuration.addAnnotatedClass(AdminLoginInfo.class);
-//        configuration.addAnnotatedClass(Klienci.class);
-//        configuration.addAnnotatedClass(Pracownicy.class);
-//        configuration.addAnnotatedClass(Samochody.class);
-//        configuration.addAnnotatedClass(Wypozyczenia.class);
         launch(args);
     }
 
